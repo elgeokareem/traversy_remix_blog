@@ -1,14 +1,14 @@
-import { Outlet, LiveReload, Link, Links, Meta } from "remix"
-import globalStylesUrl from "~/styles/global.css"
+import { Outlet, LiveReload, Link, Links, Meta } from "remix";
+import globalStylesUrl from "~/styles/global.css";
 
-export const links = () => [{ rel: "stylesheet", href: globalStylesUrl }]
+export const links = () => [{ rel: "stylesheet", href: globalStylesUrl }];
 
 export const meta = () => {
-  const description = "A cool blog build with remix"
-  const keywords = "remix, blog, javascript"
+  const description = "A cool blog build with remix";
+  const keywords = "remix, blog, javascript";
 
-  return { description, keywords }
-}
+  return { description, keywords };
+};
 
 export default function App() {
   return (
@@ -23,20 +23,20 @@ export default function App() {
 function Document({ children, title }) {
   return (
     <html lang="en">
-    <head>
-      <meta charSet="UTF-8" />
-      <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <Meta />
-      <Links />
-      <title>{ title ? title : "Me remix blog" }</title>
-    </head>
-    <body>
-      {children}
-      {process.env.NODE_ENV === "development" && <LiveReload />}
-    </body>
+      <head>
+        <meta charSet="UTF-8" />
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <Meta />
+        <Links />
+        <title>{title ? title : "Me remix blog"}</title>
+      </head>
+      <body>
+        {children}
+        {process.env.NODE_ENV === "development" && <LiveReload />}
+      </body>
     </html>
-  )
+  );
 }
 
 function Layout({ children }) {
@@ -49,16 +49,14 @@ function Layout({ children }) {
 
         <ul>
           <li>
-            <Link to='/posts'>Posts</Link>
+            <Link to="auth/login">Login</Link>
           </li>
         </ul>
       </nav>
 
-      <div className="container">
-        {children}
-      </div>
+      <div className="container">{children}</div>
     </>
-  )
+  );
 }
 
 export function ErrorBoundary({ error }) {
@@ -67,10 +65,8 @@ export function ErrorBoundary({ error }) {
     <Document>
       <Layout>
         <h1>Error</h1>
-        <p>
-          {error.message}
-        </p>
+        <p>{error.message}</p>
       </Layout>
     </Document>
-  )
+  );
 }
